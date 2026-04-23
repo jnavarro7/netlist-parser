@@ -1,0 +1,129 @@
+# Verilog netlist parser 
+
+## Python script that takes a verilog netlist as input to extract the modules and the instances of logical elements. 
+
+## Use example:
+
+    python3 netlist-parser.py <verilog netlist file>
+    
+### Block diagram:
+
+![Block Diagram](images/block-diagram.png)
+
+### Script output example: 
+
+#### With provided netlist:
+
+    Module: TopCell
+    cellA : 9 placements
+    invN1 : 61 placements
+    nand4N1 : 9 placements
+    cellC : 2 placements
+    nand2N1 : 6 placements
+    cellD : 1 placements
+    cellB : 2 placements
+    bufferCell : 8 placements
+    nor2N1 : 4 placements
+
+    Module: bufferCell
+    invN1 : 2 placements
+
+    Module: cellA
+    invN1 : 4 placements
+    nand4N1 : 1 placements
+
+    Module: cellB
+    bufferCell : 4 placements
+    invN1 : 10 placements
+    nand2N1 : 1 placements
+    nor2N1 : 2 placements
+
+    Module: cellC
+    cellA : 4 placements
+    invN1 : 18 placements
+    nand4N1 : 4 placements
+    nand2N1 : 2 placements
+    Module: cellD
+    cellB : 2 placements
+    bufferCell : 8 placements
+    invN1 : 38 placements
+    nand2N1 : 4 placements
+    nor2N1 : 4 placements
+    cellC : 1 placements
+    cellA : 4 placements
+    nand4N1 : 4 placements
+
+
+#### With modified netlist 
+
+    Module: TopCell
+    bufferCell : 48 placements
+    invN1 : 141 placements
+    cellA : 9 placements
+    nand4N1 : 9 placements
+    cellC : 2 placements
+    nand2N1 : 6 placements
+    cellD : 1 placements
+    cellB : 2 placements
+    nor2N1 : 4 placements
+
+    Module: bufferCell
+    invN1 : 2 placements
+
+    Module: cellA
+    bufferCell : 4 placements
+    invN1 : 12 placements
+    nand4N1 : 1 placements
+
+    Module: cellB
+    bufferCell : 4 placements
+    invN1 : 10 placements
+    nand2N1 : 1 placements
+    nor2N1 : 2 placements
+
+    Module: cellC
+    cellA : 4 placements
+    bufferCell : 16 placements
+    invN1 : 50 placements
+    nand4N1 : 4 placements
+    nand2N1 : 2 placements
+
+    Module: cellD
+    cellB : 2 placements
+    bufferCell : 24 placements
+    invN1 : 70 placements
+    nand2N1 : 4 placements
+    nor2N1 : 4 placements
+    cellC : 1 placements
+    cellA : 4 placements
+    nand4N1 : 4 placements
+
+
+### Netlist graphical represenation drawn by hand:
+
+To understand the netlist I hand drawn its contents. 
+
+### TopCell 
+
+![TopCell](images/topcell.png)
+
+### Buffer cell
+
+![BufferCell](images/buffercell.png)
+
+### cellA
+
+![cellA](images/cellA.png)
+
+### cellB
+
+![cellB](images/cellB.png)
+
+### cellC 
+
+![cellC](images/cellC.png)
+
+### cellD 
+
+![cellD](images/cellD.png)
+
