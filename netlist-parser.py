@@ -6,6 +6,7 @@ import sys
 def arguments():
     ap = argparse.ArgumentParser()
     ap.add_argument('input_file')
+    ap.add_argument('--verbose', default='no', choices=['yes', 'no'])
     args = ap.parse_args()
 
     # Check if the input file exists
@@ -13,14 +14,16 @@ def arguments():
         print(f"Error: The file '{args.input_file}' does not exist.")
         sys.exit(1)
 
-    return args.input_file
+    # return args.input_file
+    return args
 
-def read_input_file(file_path):
+def read_input_file(file_path, verbose):
     try:
         with open(file_path, 'r') as file:
             content = file.read()
             # Debug - print original Netlist
-            # print(f"Original Netlist Content:\n{content}")
+            if verbose:
+                print(f"Original Netlist Content:\n{content}")
             return content
     except Exception as e:
         print(f"Error reading file: {e}")
@@ -115,14 +118,22 @@ def count_instances(module_name, modules):
     return counts
 
 def main():
-    input_file = arguments()
-    netlist_content = read_input_file(input_file)
+    # input_file = arguments()
+    args = arguments()
+
+    verbose = (args.verbose == 'yes')
+
+    if verbose:
+        print ('Verbose enabled')
+    
+    netlist_content = read_input_file(args.input_file, verbose)
 
     # Pre-process the netlist by removing comments
     preprocessed_content = preprocess_netlist(netlist_content)
-    
+       
     # Debug - print preprocessed Netlist
-    # print(f"Preprocessed Netlist Content:\n{preprocessed_content}")
+    if verbose:
+        print(f"Preprocessed Netlist Content:\n{preprocessed_content}")
 
     # Extract the modules and instances
     modules = extract_modules(preprocessed_content)

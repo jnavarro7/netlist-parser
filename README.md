@@ -4,9 +4,13 @@
 
 ## Use example:
 
-    python3 netlist-parser.py <verilog netlist file>
-    
-### Block diagram:
+    python3 netlist-parser.py <verilog_netlist_file>
+
+Enable verbosity: 
+
+    python3 netlist-parser.py <verilog_netlist_file> [--verbose yes/no]    
+
+### Block diagram/Flowchart:
 
 ![Block Diagram](images/block-diagram.png)
 
