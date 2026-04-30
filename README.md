@@ -102,6 +102,12 @@ Enable verbosity:
     cellA : 4 placements
     nand4N1 : 4 placements
 
+### To do 
+
+Do not skip input, output and wire as these might be used in the future. 
+Improve the storing of these values.  Think about a diretory of directories. 
+Improve comments on code. 
+Improve the architecture for the script to be able to handle netlist files with a high number of modules/instances. 
 
 ### Netlist graphical represenation drawn by hand:
 
